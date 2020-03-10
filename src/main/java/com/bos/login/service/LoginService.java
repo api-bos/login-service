@@ -21,16 +21,16 @@ public class LoginService {
             int tmp_sellerId = tmp_seller.getId_seller();
 
             if (tmp_flagSeller != 4){
-                return new ResultEntity(null, ErrorCode.B555, "Seller dengan username: " + p_seller.getUsername() + " belum verifikasi OTP") ;
+                return new ResultEntity(null, ErrorCode.BOS_202) ;
             }else if (!tmp_passwordSeller.equals(p_seller.getPassword())){
-                return new ResultEntity(null, ErrorCode.B555, "Password salah");
+                return new ResultEntity(null, ErrorCode.BOS_200);
             }else{
                 tmp_seller = new Seller();
                 tmp_seller.setId_seller(tmp_sellerId);
-                return new ResultEntity(tmp_seller, ErrorCode.B000);
+                return new ResultEntity(tmp_seller, ErrorCode.BIT_000);
             }
         }catch (Exception e){
-            return new ResultEntity(null, ErrorCode.B555, "Seller dengan username: " + p_seller.getUsername() + " tidak ditemukan.");
+            return new ResultEntity(null, ErrorCode.BOS_201);
         }
     }
 }
