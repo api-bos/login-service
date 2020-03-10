@@ -18,13 +18,16 @@ public class LoginService {
             Seller tmp_seller = g_sellerRepository.getSellerByUsername(p_seller.getUsername());
             String tmp_passwordSeller = tmp_seller.getPassword();
             int tmp_flagSeller = tmp_seller.getFlag();
+            int tmp_sellerId = tmp_seller.getId_seller();
 
             if (tmp_flagSeller != 4){
                 return new ResultEntity(null, ErrorCode.B555, "Seller dengan username: " + p_seller.getUsername() + " belum verifikasi OTP") ;
             }else if (!tmp_passwordSeller.equals(p_seller.getPassword())){
                 return new ResultEntity(null, ErrorCode.B555, "Password salah");
             }else{
-                return new ResultEntity("Y", ErrorCode.B000);
+                tmp_seller = new Seller();
+                tmp_seller.setId_seller(tmp_sellerId);
+                return new ResultEntity(tmp_seller, ErrorCode.B000);
             }
         }catch (Exception e){
             return new ResultEntity(null, ErrorCode.B555, "Seller dengan username: " + p_seller.getUsername() + " tidak ditemukan.");
