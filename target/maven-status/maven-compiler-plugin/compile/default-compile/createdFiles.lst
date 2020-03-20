@@ -1,5 +1,7 @@
-com\bos\login\service\LoginService.class
 com\bos\login\repository\SellerRepository.class
+com\bos\login\service\LoginService.class
+com\bos\login\repository\AdminRepository.class
 com\bos\login\controller\LoginController.class
 com\bos\login\model\Seller.class
+com\bos\login\model\Admin.class
 com\bos\login\LoginApplication.class
